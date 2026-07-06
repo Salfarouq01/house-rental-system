@@ -1,0 +1,13 @@
+.navbar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .title {
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  
+  .spacer {
+    flex: 1;
+  }

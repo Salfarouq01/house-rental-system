@@ -1,0 +1,21 @@
+<div class="layout-container">
+
+    <!-- Top Navbar -->
+    <app-navbar (toggleSidebar)="toggleSidebar()"></app-navbar>
+  
+    <div class="body-container">
+  
+      <!-- Sidebar -->
+      <app-sidebar [collapsed]="!sidebarOpen"></app-sidebar>
+  
+      <!-- Main Content -->
+      <main class="content">
+        <router-outlet></router-outlet>
+      </main>
+  
+    </div>
+  
+    <!-- Footer -->
+    <app-footer></app-footer>
+  
+  </div>

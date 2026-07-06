@@ -1,0 +1,20 @@
+.container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  mat-card {
+    width: 500px;
+    padding: 20px;
+  }
+  
+  .full {
+    width: 100%;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }

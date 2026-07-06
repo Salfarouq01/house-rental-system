@@ -1,0 +1,67 @@
+<div class="login-container">
+    <mat-card class="login-card">
+  
+      <!-- Title Group -->
+      <h2 class="title">House Rental System</h2>
+      <p class="subtitle">Login to your account</p>
+  
+      <!-- Form -->
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  
+        <!-- Email Field -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="Enter your email">
+          <mat-icon matSuffix>email</mat-icon>
+  
+          @if (loginForm.get('email')?.hasError('required')) {
+            <mat-error>Email is required</mat-error>
+          }
+          @if (loginForm.get('email')?.hasError('email')) {
+            <mat-error>Enter a valid email</mat-error>
+          }
+        </mat-form-field>
+  
+        <!-- Password Field -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" placeholder="Enter your password">
+          <mat-icon matSuffix>lock</mat-icon>
+  
+          @if (loginForm.get('password')?.hasError('required')) {
+            <mat-error>Password is required</mat-error>
+          }
+          @if (loginForm.get('password')?.hasError('minlength')) {
+            <mat-error>Password must be at least 4 characters</mat-error>
+          }
+        </mat-form-field>
+  
+        <!-- Error Message -->
+        @if (errorMessage) {
+          <div class="error">
+            {{ errorMessage }}
+          </div>
+        }
+  
+        <!-- Login Button -->
+        <button mat-raised-button
+                class="full-width login-btn"
+                type="submit"
+                [disabled]="loading || loginForm.invalid">
+          
+          @if (!loading) {
+            <span>Login</span>
+          } @else {
+            <mat-spinner diameter="20"></mat-spinner>
+          }
+        </button>
+  
+        <!-- Extra Links -->
+        <div class="extra-links">
+          <a routerLink="/forgot-password">Forgot Password?</a>
+          <a routerLink="/register">Create Account</a>
+        </div>
+  
+      </form>
+    </mat-card>
+  </div>

@@ -1,0 +1,67 @@
+<div class="container">
+
+    <div class="header">
+      <h2>Houses</h2>
+  
+      <button mat-raised-button color="primary" (click)="addHouse()">
+        <mat-icon>add</mat-icon>
+        Add House
+      </button>
+    </div>
+  
+    <table mat-table [dataSource]="houses" class="mat-elevation-z8">
+  
+      <!-- ID -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let house">{{ house.id }}</td>
+      </ng-container>
+  
+      <!-- Name -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let house">{{ house.name }}</td>
+      </ng-container>
+  
+      <!-- Location -->
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef>Location</th>
+        <td mat-cell *matCellDef="let house">{{ house.location }}</td>
+      </ng-container>
+  
+      <!-- Rooms -->
+      <ng-container matColumnDef="rooms">
+        <th mat-header-cell *matHeaderCellDef>Rooms</th>
+        <td mat-cell *matCellDef="let house">{{ house.rooms }}</td>
+      </ng-container>
+  
+      <!-- Rent -->
+      <ng-container matColumnDef="rent">
+        <th mat-header-cell *matHeaderCellDef>Rent</th>
+        <td mat-cell *matCellDef="let house">
+          TZS {{ house.rentPerMonth }}
+        </td>
+      </ng-container>
+  
+      <!-- Actions -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let house">
+  
+          <button mat-icon-button color="primary" (click)="editHouse(house.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+  
+          <button mat-icon-button color="warn" (click)="deleteHouse(house.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+  
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  
+    </table>
+  
+  </div>

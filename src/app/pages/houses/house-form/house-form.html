@@ -1,0 +1,58 @@
+<div class="container">
+
+    <mat-card>
+  
+      <h2>
+        {{ isEdit ? 'Edit House' : 'Add House' }}
+      </h2>
+  
+      <form [formGroup]="form" (ngSubmit)="submit()">
+  
+        <!-- Name -->
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>House Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+  
+        <!-- Location -->
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>Location</mat-label>
+          <input matInput formControlName="location">
+        </mat-form-field>
+  
+        <!-- Description -->
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>Description</mat-label>
+          <input matInput formControlName="description">
+        </mat-form-field>
+  
+        <!-- Rooms -->
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>Rooms</mat-label>
+          <input matInput type="number" formControlName="rooms">
+        </mat-form-field>
+  
+        <!-- Rent -->
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>Rent Per Month</mat-label>
+          <input matInput type="number" formControlName="rentPerMonth">
+        </mat-form-field>
+  
+        <!-- Buttons -->
+        <div class="buttons">
+  
+          <button mat-raised-button color="primary" type="submit">
+            {{ isEdit ? 'Update' : 'Save' }}
+          </button>
+  
+          <button mat-button type="button" (click)="cancel()">
+            Cancel
+          </button>
+  
+        </div>
+  
+      </form>
+  
+    </mat-card>
+  
+  </div>
