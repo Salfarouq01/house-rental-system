@@ -6,8 +6,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 import { Router } from '@angular/router';
+
 import { HouseService } from '../../../core/services/house.service';
-import { House } from '../../../core/models/house.model';
+import { House } from '../../../core/Models/house.model';
+
 
 @Component({
   selector: 'app-house-list',

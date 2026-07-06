@@ -1,0 +1,41 @@
+/* Main Layout */
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    background: #f5f5f5;
+  }
+  
+  /* Body */
+  .body {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+  
+  /* Main Content */
+  .content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f4f6f9;
+  }
+  
+  /* Footer */
+  app-footer {
+    height: 50px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+  
+    .body {
+      flex-direction: column;
+    }
+  
+    .content {
+      padding: 15px;
+    }
+  
+  }
