@@ -1,0 +1,173 @@
+<mat-card>
+
+    <div class="header">
+
+        <h2>Payments</h2>
+
+        <button
+            mat-raised-button
+            color="primary"
+            (click)="addPayment()">
+
+            <mat-icon>add</mat-icon>
+            Add Payment
+
+        </button>
+
+    </div>
+
+    <table
+        mat-table
+        [dataSource]="payments"
+        class="mat-elevation-z2">
+
+        <!-- Tenant -->
+        <ng-container matColumnDef="tenant">
+
+            <th mat-header-cell *matHeaderCellDef>
+                Tenant
+            </th>
+
+            <td mat-cell *matCellDef="let payment">
+
+                {{ getTenant(payment.tenantId)?.firstName }}
+                {{ getTenant(payment.tenantId)?.lastName }}
+
+            </td>
+
+        </ng-container>
+
+        <!-- Amount -->
+
+        <ng-container matColumnDef="amount">
+
+            <th mat-header-cell *matHeaderCellDef>
+                Amount
+            </th>
+
+            <td mat-cell *matCellDef="let payment">
+
+                {{ payment.amount | number }}
+
+            </td>
+
+        </ng-container>
+
+        <!-- Month -->
+
+        <ng-container matColumnDef="month">
+
+            <th mat-header-cell *matHeaderCellDef>
+                Month
+            </th>
+
+            <td mat-cell *matCellDef="let payment">
+
+                {{ payment.month }}/{{ payment.year }}
+
+            </td>
+
+        </ng-container>
+
+        <!-- Method -->
+
+        <ng-container matColumnDef="paymentMethod">
+
+            <th mat-header-cell *matHeaderCellDef>
+                Method
+            </th>
+
+            <td mat-cell *matCellDef="let payment">
+
+                {{ payment.paymentMethod }}
+
+            </td>
+
+        </ng-container>
+
+        <!-- Date -->
+
+        <ng-container matColumnDef="paymentDate">
+
+            <th mat-header-cell *matHeaderCellDef>
+                Date
+            </th>
+
+            <td mat-cell *matCellDef="let payment">
+
+                {{ payment.paymentDate | date:'dd/MM/yyyy' }}
+
+            </td>
+
+        </ng-container>
+
+        <!-- Status -->
+
+        <ng-container matColumnDef="status">
+
+            <th mat-header-cell *matHeaderCellDef>
+                Status
+            </th>
+
+            <td mat-cell *matCellDef="let payment">
+
+                {{ payment.status }}
+
+            </td>
+
+        </ng-container>
+
+        <!-- Actions -->
+
+        <ng-container matColumnDef="actions">
+
+            <th mat-header-cell *matHeaderCellDef>
+                Actions
+            </th>
+
+            <td mat-cell *matCellDef="let payment">
+
+                <button
+                    mat-icon-button
+                    color="primary"
+                    (click)="viewPayment(payment.id)">
+
+                    <mat-icon>visibility</mat-icon>
+
+                </button>
+
+                <button
+                    mat-icon-button
+                    color="accent"
+                    (click)="editPayment(payment.id)">
+
+                    <mat-icon>edit</mat-icon>
+
+                </button>
+
+                <button
+                    mat-icon-button
+                    color="warn"
+                    (click)="deletePayment(payment.id)">
+
+                    <mat-icon>delete</mat-icon>
+
+                </button>
+
+            </td>
+
+        </ng-container>
+
+        <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns">
+        </tr>
+
+        <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns">
+        </tr>
+
+    </table>
+
+</mat-card>

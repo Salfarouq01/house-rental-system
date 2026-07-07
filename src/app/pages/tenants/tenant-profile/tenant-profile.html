@@ -1,0 +1,143 @@
+<mat-card *ngIf="tenant">
+
+
+    <div class="header">
+
+        <h2>
+            Tenant Profile
+        </h2>
+
+
+        <button
+        mat-raised-button
+        color="primary"
+        (click)="edit()">
+
+            <mat-icon>
+                edit
+            </mat-icon>
+
+            Edit
+
+        </button>
+
+
+    </div>
+
+
+
+    <mat-card-content>
+
+
+        <h3>
+            Personal Information
+        </h3>
+
+
+        <p>
+            <b>Name:</b>
+            {{tenant.firstName}}
+            {{tenant.lastName}}
+        </p>
+
+
+        <p>
+            <b>Gender:</b>
+            {{tenant.gender}}
+        </p>
+
+
+        <p>
+            <b>Phone:</b>
+            {{tenant.phone}}
+        </p>
+
+
+        <p>
+            <b>Email:</b>
+            {{tenant.email}}
+        </p>
+
+
+        <p>
+            <b>National ID:</b>
+            {{tenant.nationalId}}
+        </p>
+
+
+
+        <h3>
+            Rental Information
+        </h3>
+
+
+        <p>
+            <b>House:</b>
+
+            {{house?.name}}
+
+        </p>
+
+
+
+        <p>
+            <b>Location:</b>
+
+            {{house?.location}}
+
+        </p>
+
+
+
+        <p>
+            <b>Room:</b>
+
+            {{room?.roomNumber}}
+
+        </p>
+
+
+
+        <p>
+            <b>Monthly Rent:</b>
+
+            {{room?.monthlyRent | number}}
+
+            TZS
+
+        </p>
+
+
+
+        <p>
+            <b>Status:</b>
+
+            {{tenant.status}}
+
+        </p>
+
+
+
+        <p>
+            <b>Move In Date:</b>
+
+            {{tenant.moveInDate | date}}
+
+        </p>
+
+
+
+    </mat-card-content>
+
+
+
+    <button
+    mat-button
+    (click)="back()">
+
+        Back
+
+    </button>
+
+
+</mat-card>

@@ -47,6 +47,6 @@ export class HouseService {
   }
 
   getById(id: number): House | undefined {
-    return this.houses.find(h => h.id === id);
+    return this.houses.find(house => house.id === id);
   }
 }

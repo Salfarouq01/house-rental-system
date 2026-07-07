@@ -1,0 +1,110 @@
+<mat-card>
+
+    <div class="header">
+  
+      <h2>Tenants</h2>
+  
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="addTenant()">
+  
+        <mat-icon>add</mat-icon>
+        Add Tenant
+  
+      </button>
+  
+    </div>
+  
+    <table mat-table [dataSource]="tenants" class="mat-elevation-z2">
+  
+      <!-- Name -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+  
+        <td mat-cell *matCellDef="let tenant">
+          {{ tenant.firstName }} {{ tenant.lastName }}
+        </td>
+      </ng-container>
+  
+      <!-- Gender -->
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef>Gender</th>
+  
+        <td mat-cell *matCellDef="let tenant">
+          {{ tenant.gender }}
+        </td>
+      </ng-container>
+  
+      <!-- Phone -->
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>Phone</th>
+  
+        <td mat-cell *matCellDef="let tenant">
+          {{ tenant.phone }}
+        </td>
+      </ng-container>
+  
+      <!-- Room -->
+      <ng-container matColumnDef="room">
+        <th mat-header-cell *matHeaderCellDef>Room</th>
+  
+        <td mat-cell *matCellDef="let tenant">
+          {{ getRoom(tenant.roomId)?.roomNumber }}
+        </td>
+      </ng-container>
+  
+      <!-- House -->
+      <ng-container matColumnDef="house">
+        <th mat-header-cell *matHeaderCellDef>House</th>
+  
+        <td mat-cell *matCellDef="let tenant">
+          {{ getHouseName(tenant.roomId) }}
+        </td>
+      </ng-container>
+  
+      <!-- Status -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+  
+        <td mat-cell *matCellDef="let tenant">
+          {{ tenant.status }}
+        </td>
+      </ng-container>
+  
+      <!-- Actions -->
+      <ng-container matColumnDef="actions">
+  
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+  
+        <td mat-cell *matCellDef="let tenant">
+  
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="editTenant(tenant.id)">
+  
+            <mat-icon>edit</mat-icon>
+  
+          </button>
+  
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="deleteTenant(tenant.id)">
+  
+            <mat-icon>delete</mat-icon>
+  
+          </button>
+  
+        </td>
+  
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  
+    </table>
+  
+  </mat-card>

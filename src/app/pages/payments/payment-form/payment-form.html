@@ -1,0 +1,175 @@
+<mat-card>
+
+    <h2>
+    {{ isEdit ? 'Edit Payment' : 'Add Payment' }}
+    </h2>
+    
+    
+    <form
+    [formGroup]="form"
+    (ngSubmit)="save()">
+    
+    
+    
+    <mat-form-field appearance="outline">
+    
+    <mat-label>
+    Tenant
+    </mat-label>
+    
+    <mat-select
+    formControlName="tenantId"
+    (change)="loadTenantRent()">
+    
+    
+    <mat-option
+    *ngFor="let tenant of tenants"
+    [value]="tenant.id">
+    
+    
+    {{tenant.firstName}}
+    {{tenant.lastName}}
+    
+    
+    </mat-option>
+    
+    
+    </mat-select>
+    
+    </mat-form-field>
+    
+    
+    
+    <mat-form-field appearance="outline">
+    
+    <mat-label>
+    Amount
+    </mat-label>
+    
+    <input
+    matInput
+    type="number"
+    formControlName="amount">
+    
+    </mat-form-field>
+    
+    
+    
+    <mat-form-field appearance="outline">
+    
+    <mat-label>
+    Payment Method
+    </mat-label>
+    
+    
+    <mat-select
+    formControlName="paymentMethod">
+    
+    
+    <mat-option value="Cash">
+    Cash
+    </mat-option>
+    
+    
+    <mat-option value="Bank">
+    Bank
+    </mat-option>
+    
+    
+    <mat-option value="Mobile Money">
+    Mobile Money
+    </mat-option>
+    
+    
+    <mat-option value="Card">
+    Card
+    </mat-option>
+    
+    
+    </mat-select>
+    
+    </mat-form-field>
+    
+    
+    
+    <mat-form-field appearance="outline">
+    
+    <mat-label>
+    Month
+    </mat-label>
+    
+    <input
+    matInput
+    formControlName="month">
+    
+    </mat-form-field>
+    
+    
+    
+    <mat-form-field appearance="outline">
+    
+    <mat-label>
+    Year
+    </mat-label>
+    
+    <input
+    matInput
+    type="number"
+    formControlName="year">
+    
+    </mat-form-field>
+    
+    
+    
+    <mat-form-field appearance="outline">
+    
+    <mat-label>
+    Reference Number
+    </mat-label>
+    
+    <input
+    matInput
+    formControlName="referenceNumber">
+    
+    </mat-form-field>
+    
+    
+    
+    <mat-form-field appearance="outline">
+    
+    <mat-label>
+    Notes
+    </mat-label>
+    
+    <textarea
+    matInput
+    formControlName="notes">
+    </textarea>
+    
+    </mat-form-field>
+    
+    
+    
+    <button
+    mat-raised-button
+    color="primary">
+    
+    Save
+    
+    </button>
+    
+    
+    <button
+    type="button"
+    mat-button
+    (click)="cancel()">
+    
+    Cancel
+    
+    </button>
+    
+    
+    
+    </form>
+    
+    </mat-card>

@@ -1,0 +1,16 @@
+mat-card {
+    width: 700px;
+    margin: 30px auto;
+    padding: 20px;
+  }
+  
+  .full {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
