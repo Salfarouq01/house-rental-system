@@ -1,9 +1,19 @@
-export interface Permission{
+export enum Permission {
 
-    id:number;
-    
-    module:string;
-    
-    action:string;
-    
-    }
+    VIEW_DASHBOARD = 'VIEW_DASHBOARD',
+  
+    MANAGE_HOUSES = 'MANAGE_HOUSES',
+  
+    MANAGE_ROOMS = 'MANAGE_ROOMS',
+  
+    MANAGE_TENANTS = 'MANAGE_TENANTS',
+  
+    MANAGE_PAYMENTS = 'MANAGE_PAYMENTS',
+  
+    VIEW_REPORTS = 'VIEW_REPORTS',
+  
+    MANAGE_USERS = 'MANAGE_USERS',
+  
+    MANAGE_ROLES = 'MANAGE_ROLES'
+  
+  }

@@ -1,5 +1,28 @@
-.reports{
+.dashboard{
 
+    padding:20px;
+    
+    }
+    
+    
+    
+    .dashboard h2{
+    
+    display:flex;
+    
+    align-items:center;
+    
+    gap:10px;
+    
+    margin-bottom:20px;
+    
+    }
+    
+    
+    
+    
+    .cards{
+    
     display:grid;
     
     grid-template-columns:
@@ -7,22 +30,125 @@
     
     gap:20px;
     
-    padding:20px;
+    }
+    
+    
+    
+    
+    
+    .card{
+    
+    padding:25px;
+    
+    display:flex;
+    
+    align-items:center;
+    
+    gap:20px;
+    
+    border-radius:15px;
     
     }
     
     
-    mat-card{
     
-    padding:25px;
+    .card mat-icon{
+    
+    font-size:45px;
+    
+    width:45px;
+    
+    height:45px;
+    
+    }
+    
+    
+    
+    
+    .card h1{
+    
+    font-size:35px;
+    
+    margin:5px 0;
+    
+    }
+    
+    
+    
+    
+    .blue{
+    
+    border-left:6px solid #1976d2;
+    
+    }
+    
+    
+    
+    .green{
+    
+    border-left:6px solid green;
+    
+    }
+    
+    
+    
+    .orange{
+    
+    border-left:6px solid orange;
+    
+    }
+    
+    
+    
+    .gray{
+    
+    border-left:6px solid gray;
+    
+    }
+    
+    
+    
+    .purple{
+    
+    border-left:6px solid purple;
+    
+    }
+    
+    
+    
+    .red{
+    
+    border-left:6px solid red;
+    
+    }
+    
+    
+    
+    
+    .occupancy{
+    
+    margin:30px 0;
+    
+    padding:30px;
     
     text-align:center;
     
     }
     
     
-    h1{
     
-    font-size:40px;
+    .percentage{
+    
+    font-size:60px;
+    
+    font-weight:bold;
+    
+    }
+    
+    
+    
+    table{
+    
+    width:100%;
     
     }

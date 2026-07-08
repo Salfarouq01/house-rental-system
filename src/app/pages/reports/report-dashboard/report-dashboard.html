@@ -1,92 +1,328 @@
-<p>report-dashboard works!</p>
-<div class="reports">
+<div class="dashboard">
 
 
-    <mat-card>
+    <h2>
+    <mat-icon>
+    assessment
+    </mat-icon>
+    
+    Rental Management Reports
+    
+    </h2>
+    
+    
+    
+    <div class="cards">
+    
+    
+    
+    <mat-card class="card blue">
+    
+    <mat-icon>
+    home
+    </mat-icon>
+    
+    
+    <div>
     
     <h3>
     Total Houses
     </h3>
     
+    
     <h1>
     {{totalHouses}}
     </h1>
+    
+    </div>
+    
     
     </mat-card>
     
     
     
-    <mat-card>
+    
+    
+    <mat-card class="card green">
+    
+    <mat-icon>
+    meeting_room
+    </mat-icon>
+    
+    
+    <div>
     
     <h3>
     Total Rooms
     </h3>
     
+    
     <h1>
     {{totalRooms}}
     </h1>
+    
+    </div>
+    
     
     </mat-card>
     
     
     
-    <mat-card>
+    
+    
+    
+    
+    <mat-card class="card orange">
+    
+    
+    <mat-icon>
+    key
+    </mat-icon>
+    
+    
+    <div>
     
     <h3>
     Occupied Rooms
     </h3>
     
+    
     <h1>
     {{occupiedRooms}}
     </h1>
+    
+    </div>
+    
     
     </mat-card>
     
     
     
-    <mat-card>
+    
+    
+    
+    
+    <mat-card class="card gray">
+    
+    
+    <mat-icon>
+    door_front
+    </mat-icon>
+    
+    
+    <div>
     
     <h3>
     Available Rooms
     </h3>
     
+    
     <h1>
     {{availableRooms}}
     </h1>
+    
+    </div>
+    
     
     </mat-card>
     
     
     
-    <mat-card>
+    
+    
+    
+    
+    <mat-card class="card purple">
+    
+    
+    <mat-icon>
+    people
+    </mat-icon>
+    
+    
+    <div>
     
     <h3>
-    Total Tenants
+    Tenants
     </h3>
+    
     
     <h1>
     {{totalTenants}}
     </h1>
     
+    </div>
+    
+    
     </mat-card>
     
     
     
-    <mat-card>
+    
+    
+    
+    
+    
+    <mat-card class="card red">
+    
+    
+    <mat-icon>
+    payments
+    </mat-icon>
+    
+    
+    <div>
     
     <h3>
     Income
     </h3>
     
+    
     <h1>
     {{totalIncome | number}}
     </h1>
+    
     
     <p>
     TZS
     </p>
     
+    
+    </div>
+    
+    
     </mat-card>
+    
+    
+    
+    </div>
+    
+    
+    
+    
+    
+    <mat-card class="occupancy">
+    
+    
+    <h2>
+    Room Occupancy
+    </h2>
+    
+    
+    <div class="percentage">
+    
+    {{occupancyRate}}%
+    
+    </div>
+    
+    
+    <p>
+    Currently occupied rooms
+    </p>
+    
+    
+    </mat-card>
+    
+    
+    
+    
+    
+    
+    
+    <mat-card>
+    
+    
+    <h2>
+    Recent Payments
+    </h2>
+    
+    
+    
+    <table 
+    mat-table 
+    [dataSource]="recentPayments"
+    class="mat-elevation-z2">
+    
+    
+    
+    <ng-container matColumnDef="tenant">
+    
+    <th mat-header-cell *matHeaderCellDef>
+    Tenant
+    </th>
+    
+    
+    <td mat-cell *matCellDef="let p">
+    
+    {{p.tenantName}}
+    
+    </td>
+    
+    </ng-container>
+    
+    
+    
+    
+    
+    
+    <ng-container matColumnDef="amount">
+    
+    <th mat-header-cell *matHeaderCellDef>
+    Amount
+    </th>
+    
+    
+    <td mat-cell *matCellDef="let p">
+    
+    {{p.amount | number}}
+    
+     TZS
+    
+    </td>
+    
+    </ng-container>
+    
+    
+    
+    
+    
+    <ng-container matColumnDef="status">
+    
+    <th mat-header-cell *matHeaderCellDef>
+    Status
+    </th>
+    
+    
+    <td mat-cell *matCellDef="let p">
+    
+    {{p.status}}
+    
+    </td>
+    
+    </ng-container>
+    
+    
+    
+    <tr 
+    mat-header-row
+    *matHeaderRowDef="displayColumns">
+    
+    </tr>
+    
+    
+    
+    <tr
+    mat-row
+    *matRowDef="let row; columns:displayColumns">
+    
+    </tr>
+    
+    
+    </table>
+    
+    
+    </mat-card>
+    
     
     
     </div>

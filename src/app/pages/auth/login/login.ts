@@ -175,85 +175,31 @@ this.authService.getUser();
 
 switch(user?.role){
 
-
-
-case UserRole.ADMIN:
-
-
-this.router.navigate([
-'/admin/dashboard'
-]);
-
-
-break;
-
-
-
-
-case UserRole.OWNER:
-
-
-this.router.navigate([
-'/owner/dashboard'
-]);
-
-
-break;
-
-
-
-
-case UserRole.MANAGER:
-
-
-this.router.navigate([
-'/manager/dashboard'
-]);
-
-
-break;
-
-
-
-
-case UserRole.ACCOUNTANT:
-
-
-this.router.navigate([
-'/accountant/dashboard'
-]);
-
-
-break;
-
-
-
-
-case UserRole.TENANT:
-
-
-this.router.navigate([
-'/tenant/dashboard'
-]);
-
-
-break;
-
-
-
-
-default:
-
-
-this.router.navigate([
-'/login'
-]);
-
-
-break;
-
-
-}
+  case UserRole.ADMIN:
+  this.router.navigate(['/admin/dashboard']);
+  break;
+  
+  
+  case UserRole.OWNER:
+  this.router.navigate(['/owner/dashboard']);
+  break;
+  
+  
+  case UserRole.MANAGER:
+  this.router.navigate(['/manager/dashboard']);
+  break;
+  
+  
+  case UserRole.ACCOUNTANT:
+  this.router.navigate(['/accountant/dashboard']);
+  break;
+  
+  
+  case UserRole.TENANT:
+  this.router.navigate(['/tenant/dashboard']);
+  break;
+  
+  }
 
 
 

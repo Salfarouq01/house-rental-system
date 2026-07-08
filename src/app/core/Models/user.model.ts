@@ -1,33 +1,56 @@
+import { Permission } from './permission.model';
+
+
 export enum UserRole {
+
   ADMIN = 'ADMIN',
+
   OWNER = 'OWNER',
+
   MANAGER = 'MANAGER',
+
   ACCOUNTANT = 'ACCOUNTANT',
+
   TENANT = 'TENANT'
+
 }
+
+
 
 export interface User {
 
-  id: number;
 
-  fullName: string;
+id:number;
 
-  email: string;
 
-  username: string;
+fullName:string;
 
-  password: string;
 
-  phone: string;
+email:string;
 
-  role: UserRole;
 
-  permissions: string[];
+username:string;
 
-  status: 'Active' | 'Inactive';
 
-  createdAt: Date;
+password:string;
 
-  lastLogin?: Date;
+
+phone:string;
+
+
+role:UserRole;
+
+
+status:'Active'|'Inactive';
+
+
+permissions: Permission[];
+
+
+createdAt:string;
+
+
+lastLogin?:string;
+
 
 }

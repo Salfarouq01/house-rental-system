@@ -65,19 +65,19 @@ export class SidebarComponent {
           {
             title: 'Houses',
             icon: 'home',
-            route: '/houses'
+            route: 'houses'
           },
 
           {
             title: 'Rooms',
             icon: 'meeting_room',
-            route: '/rooms'
+            route: 'rooms'
           },
 
           {
             title: 'Tenants',
             icon: 'people',
-            route: '/tenants'
+            route: 'tenants'
           },
 
           {
@@ -95,7 +95,7 @@ export class SidebarComponent {
           {
             title: 'Users',
             icon: 'manage_accounts',
-            route: '/admin/users'
+            route: 'admin/users'
           },
 
           {

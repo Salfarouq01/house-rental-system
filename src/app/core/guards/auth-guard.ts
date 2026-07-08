@@ -3,26 +3,27 @@ import { inject } from '@angular/core';
 import {
 CanActivateFn,
 Router
-} from '@angular/router';
+}
+from '@angular/router';
 
 
-import { AuthService } from '../services/auth.service';
-
-
-
-export const authGuard:CanActivateFn = () => {
-
-
-const authService =
-inject(AuthService);
-
-
-const router =
-inject(Router);
+import {
+AuthService
+}
+from '../services/auth.service';
 
 
 
-if(authService.isLoggedIn()){
+export const authGuard:CanActivateFn=()=>{
+
+
+const auth=inject(AuthService);
+
+const router=inject(Router);
+
+
+
+if(auth.isLoggedIn()){
 
 return true;
 
@@ -30,7 +31,9 @@ return true;
 
 
 
-return router.createUrlTree(['/login']);
+return router.createUrlTree([
+'/login'
+]);
 
 
 };

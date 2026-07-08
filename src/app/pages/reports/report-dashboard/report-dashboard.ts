@@ -1,126 +1,205 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 
-import { MatCardModule } from '@angular/material/card';
-import { MatTableModule } from '@angular/material/table';
+import {
+  MatCardModule
+} from '@angular/material/card';
 
-import { HouseService } from '../../../core/services/house.service';
-import { RoomService } from '../../../core/services/room.service';
-import { TenantService } from '../../../core/services/tenant.service';
-import { PaymentService } from '../../../core/services/payment.service';
+import {
+  MatIconModule
+} from '@angular/material/icon';
+
+import {
+  MatTableModule
+} from '@angular/material/table';
+
+
+import { HouseService } 
+from '../../../core/services/house.service';
+
+import { RoomService } 
+from '../../../core/services/room.service';
+
+import { TenantService } 
+from '../../../core/services/tenant.service';
+
+import { PaymentService } 
+from '../../../core/services/payment.service';
+
 
 
 @Component({
-  selector: 'app-report-dashboard',
 
-  standalone: true,
+selector:'app-report-dashboard',
 
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatTableModule
-  ],
+standalone:true,
 
-  templateUrl: './report-dashboard.html',
-  styleUrl: './report-dashboard.css'
+imports:[
+
+CommonModule,
+
+MatCardModule,
+
+MatIconModule,
+
+MatTableModule
+
+],
+
+templateUrl:'./report-dashboard.html',
+
+styleUrl:'./report-dashboard.css'
+
 })
-export class ReportDashboardComponent {
 
 
-  private houseService = inject(HouseService);
-
-  private roomService = inject(RoomService);
-
-  private tenantService = inject(TenantService);
-
-  private paymentService = inject(PaymentService);
+export class ReportDashboardComponent implements OnInit {
 
 
 
-  totalHouses = 0;
+private houseService = inject(HouseService);
 
-  totalRooms = 0;
+private roomService = inject(RoomService);
 
-  occupiedRooms = 0;
+private tenantService = inject(TenantService);
 
-  availableRooms = 0;
-
-  totalTenants = 0;
-
-  totalIncome = 0;
+private paymentService = inject(PaymentService);
 
 
 
-  constructor(){
 
-    this.loadReports();
+totalHouses = 0;
 
-  }
+totalRooms = 0;
 
+occupiedRooms = 0;
 
+availableRooms = 0;
 
-  loadReports(){
+totalTenants = 0;
 
-
-    const houses =
-      this.houseService.getAll();
-
-
-    const rooms =
-      this.roomService.getAll();
+totalIncome = 0;
 
 
-    const tenants =
-      this.tenantService.getAll();
-
-
-    const payments =
-      this.paymentService.getAll();
+occupancyRate = 0;
 
 
 
-    this.totalHouses =
-      houses.length;
+recentPayments:any[]=[];
 
 
 
-    this.totalRooms =
-      rooms.length;
+displayColumns=[
+
+'tenant',
+
+'amount',
+
+'status'
+
+];
 
 
 
-    this.occupiedRooms =
-      rooms.filter(
-        r => r.status === 'Occupied'
-      ).length;
+
+ngOnInit(){
+
+this.loadReports();
+
+}
 
 
 
-    this.availableRooms =
-      rooms.filter(
-        r => r.status === 'Available'
-      ).length;
+
+
+loadReports(){
 
 
 
-    this.totalTenants =
-      tenants.length;
+const houses =
+this.houseService.getAll();
+
+
+const rooms =
+this.roomService.getAll();
+
+
+const tenants =
+this.tenantService.getAll();
+
+
+const payments =
+this.paymentService.getAll();
 
 
 
-    this.totalIncome =
-      payments
-      .filter(
-        p => p.status === 'Paid'
-      )
-      .reduce(
-        (total,p)=>
-        total+p.amount,
-        0
-      );
+this.totalHouses =
+houses.length;
 
 
-  }
+
+this.totalRooms =
+rooms.length;
+
+
+
+this.occupiedRooms =
+rooms.filter(
+r=>r.status==='Occupied'
+).length;
+
+
+
+this.availableRooms =
+rooms.filter(
+r=>r.status==='Available'
+).length;
+
+
+
+this.totalTenants =
+tenants.length;
+
+
+
+
+this.totalIncome =
+payments
+
+.filter(
+p=>p.status==='Paid'
+)
+
+.reduce(
+(sum,p)=>
+sum+p.amount,
+0
+);
+
+
+
+
+if(this.totalRooms>0){
+
+this.occupancyRate =
+Math.round(
+(this.occupiedRooms / this.totalRooms)
+*100
+);
+
+}
+
+
+
+this.recentPayments =
+payments.slice(-5);
+
+
+
+}
+
+
 
 
 }
