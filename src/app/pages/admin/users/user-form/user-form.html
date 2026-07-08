@@ -1,0 +1,311 @@
+<div class="page">
+
+    <mat-card class="form-card">
+
+
+        <!-- Header -->
+
+        <div class="form-header">
+
+            <div>
+
+                <h2>
+                    {{isEdit ? 'Edit User' : 'Create New User'}}
+                </h2>
+
+                <p>
+                    Manage user account information and permissions
+                </p>
+
+            </div>
+
+
+            <mat-icon>
+                manage_accounts
+            </mat-icon>
+
+
+        </div>
+
+
+
+        <form [formGroup]="form" (ngSubmit)="save()">
+
+
+
+            <!-- Personal Information -->
+
+            <h3 class="section-title">
+
+                Personal Information
+
+            </h3>
+
+
+            <div class="form-grid">
+
+
+                <mat-form-field appearance="outline">
+
+                    <mat-label>
+                        Full Name
+                    </mat-label>
+
+                    <input 
+                    matInput
+                    formControlName="fullName">
+
+                    <mat-icon matSuffix>
+                        person
+                    </mat-icon>
+
+                </mat-form-field>
+
+
+
+
+                <mat-form-field appearance="outline">
+
+                    <mat-label>
+                        Email Address
+                    </mat-label>
+
+                    <input 
+                    matInput
+                    formControlName="email">
+
+                    <mat-icon matSuffix>
+                        email
+                    </mat-icon>
+
+                </mat-form-field>
+
+
+
+
+
+                <mat-form-field appearance="outline">
+
+                    <mat-label>
+                        Phone Number
+                    </mat-label>
+
+                    <input 
+                    matInput
+                    formControlName="phone">
+
+                    <mat-icon matSuffix>
+                        phone
+                    </mat-icon>
+
+                </mat-form-field>
+
+
+
+            </div>
+
+
+
+
+            <!-- Account Information -->
+
+
+            <h3 class="section-title">
+
+                Account Information
+
+            </h3>
+
+
+
+            <div class="form-grid">
+
+
+
+                <mat-form-field appearance="outline">
+
+                    <mat-label>
+                        Username
+                    </mat-label>
+
+                    <input 
+                    matInput
+                    formControlName="username">
+
+
+                    <mat-icon matSuffix>
+                        account_circle
+                    </mat-icon>
+
+
+                </mat-form-field>
+
+
+
+
+
+
+                <mat-form-field appearance="outline">
+
+                    <mat-label>
+                        Password
+                    </mat-label>
+
+
+                    <input 
+                    matInput
+                    type="password"
+                    formControlName="password">
+
+
+                    <mat-icon matSuffix>
+                        lock
+                    </mat-icon>
+
+
+                </mat-form-field>
+
+
+
+
+
+
+                <mat-form-field appearance="outline">
+
+
+                    <mat-label>
+                        User Role
+                    </mat-label>
+
+
+                    <mat-select formControlName="role">
+
+
+                        @for(role of roles; track role){
+
+                            <mat-option [value]="role">
+
+                                {{role}}
+
+                            </mat-option>
+
+                        }
+
+
+                    </mat-select>
+
+
+                </mat-form-field>
+
+
+
+            </div>
+
+
+
+
+
+            <!-- Status -->
+
+            <div class="status-box">
+
+
+                <mat-icon>
+                    verified_user
+                </mat-icon>
+
+
+                <div>
+
+                    <h4>
+                        Account Status
+                    </h4>
+
+
+                    <p>
+                        Enable or disable user access
+                    </p>
+
+
+                </div>
+
+
+                <mat-slide-toggle
+
+                    formControlName="status">
+
+                    Active
+
+                </mat-slide-toggle>
+
+
+            </div>
+
+
+
+
+
+
+
+            <!-- Buttons -->
+
+
+            <div class="actions">
+
+
+                <button
+
+                type="button"
+
+                mat-stroked-button
+
+                (click)="cancel()">
+
+
+                    <mat-icon>
+                        close
+                    </mat-icon>
+
+
+                    Cancel
+
+
+                </button>
+
+
+
+
+
+                <button
+
+                type="submit"
+
+                mat-raised-button
+
+                color="primary">
+
+
+                    <mat-icon>
+                        save
+                    </mat-icon>
+
+
+                    {{isEdit ? 'Update User':'Save User'}}
+
+
+                </button>
+
+
+
+            </div>
+
+
+
+        </form>
+
+
+
+    </mat-card>
+
+
+</div>

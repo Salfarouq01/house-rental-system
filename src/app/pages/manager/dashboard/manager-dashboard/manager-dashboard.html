@@ -1,0 +1,33 @@
+<div class="dashboard-container">
+
+    <h2>Manager Dashboard</h2>
+
+    <div class="dashboard-grid">
+
+        <mat-card class="card primary">
+            <mat-icon>groups</mat-icon>
+            <h3>Total Tenants</h3>
+            <h1>{{ totalTenants }}</h1>
+        </mat-card>
+
+        <mat-card class="card success">
+            <mat-icon>meeting_room</mat-icon>
+            <h3>Available Rooms</h3>
+            <h1>{{ availableRooms }}</h1>
+        </mat-card>
+
+        <mat-card class="card warning">
+            <mat-icon>hotel</mat-icon>
+            <h3>Occupied Rooms</h3>
+            <h1>{{ occupiedRooms }}</h1>
+        </mat-card>
+
+        <mat-card class="card income">
+            <mat-icon>payments</mat-icon>
+            <h3>Pending Payments</h3>
+            <h1>{{ pendingPayments }}</h1>
+        </mat-card>
+
+    </div>
+
+</div>

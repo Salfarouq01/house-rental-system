@@ -1,65 +1,93 @@
-.container {
+.container{
 
-    height:100vh;
-    
-    }
-    
-    
-    
-    mat-sidenav {
-    
-    width:260px;
-    
-    }
-    
-    
-    
-    mat-toolbar {
-    
-    height:64px;
-    
-    }
-    
-    
-    
-    .space {
-    
-    flex:1;
-    
-    }
-    
-    
-    
-    .content {
-    
-    padding:20px;
-    
-    }
-    
-    
-    mat-icon {
-    
-    margin-right:10px;
-    
-    }
-    
-    
-    
-    a {
-    
-    display:flex;
-    
-    align-items:center;
-    
-    gap:10px;
-    
-    }
-    
-    
-    button {
-    
-    width:100%;
-    
-    text-align:left;
-    
-    }
+  height:100vh;
+  
+  }
+  
+  
+  
+  .sidebar{
+  
+  width:280px;
+  
+  border-right:1px solid #ddd;
+  
+  }
+  
+  
+  
+  .logo{
+  
+  height:70px;
+  
+  font-size:20px;
+  
+  font-weight:700;
+  
+  display:flex;
+  
+  gap:10px;
+  
+  align-items:center;
+  
+  }
+  
+  
+  
+  mat-nav-list a{
+  
+  margin:8px 12px;
+  
+  border-radius:12px;
+  
+  }
+  
+  
+  
+  mat-nav-list a:hover{
+  
+  background:#e3f2fd;
+  
+  }
+  
+  
+  
+  .active{
+  
+  background:#1976d2;
+  
+  color:white!important;
+  
+  }
+  
+  
+  
+  .space{
+  
+  flex:1;
+  
+  }
+  
+  
+  
+  .user{
+  
+  display:flex;
+  
+  align-items:center;
+  
+  gap:8px;
+  
+  }
+  
+  
+  
+  .content{
+  
+  padding:25px;
+  
+  background:#f6f8fc;
+  
+  min-height:calc(100vh - 64px);
+  
+  }

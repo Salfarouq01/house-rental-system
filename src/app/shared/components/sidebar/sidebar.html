@@ -1,32 +1,34 @@
 <div class="sidebar" [class.collapsed]="collapsed">
 
-    <mat-nav-list>
-  
-      <a mat-list-item routerLink="/dashboard">
-        <mat-icon>dashboard</mat-icon>
-        <span *ngIf="!collapsed">Dashboard</span>
+  <mat-nav-list>
+
+      @for(menu of menus; track menu.route){
+
+      <a
+          mat-list-item
+          [routerLink]="menu.route"
+          routerLinkActive="active">
+
+          <mat-icon>
+
+              {{menu.icon}}
+
+          </mat-icon>
+
+          @if(!collapsed){
+
+          <span>
+
+              {{menu.title}}
+
+          </span>
+
+          }
+
       </a>
-  
-      <a mat-list-item routerLink="/houses">
-        <mat-icon>home</mat-icon>
-        <span *ngIf="!collapsed">Houses</span>
-      </a>
-  
-      <a mat-list-item routerLink="/rooms">
-        <mat-icon>meeting_room</mat-icon>
-        <span *ngIf="!collapsed">Rooms</span>
-      </a>
-  
-      <a mat-list-item routerLink="/tenants">
-        <mat-icon>people</mat-icon>
-        <span *ngIf="!collapsed">Tenants</span>
-      </a>
-  
-      <a mat-list-item routerLink="/payments">
-        <mat-icon>payments</mat-icon>
-        <span *ngIf="!collapsed">Payments</span>
-      </a>
-  
-    </mat-nav-list>
-  
-  </div>
+
+      }
+
+  </mat-nav-list>
+
+</div>

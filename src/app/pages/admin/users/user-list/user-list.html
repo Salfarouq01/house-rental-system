@@ -1,0 +1,282 @@
+<div class="page">
+
+    <div class="page-header">
+
+        <div>
+            <h2>User Management</h2>
+            <p>Manage system users, roles and permissions</p>
+        </div>
+
+        <button mat-raised-button color="primary" (click)="addUser()">
+            <mat-icon>person_add</mat-icon>
+            Add User
+        </button>
+
+    </div>
+
+
+    <!-- Statistics -->
+
+    <div class="stats">
+
+        <mat-card class="stat-card">
+
+            <mat-icon>groups</mat-icon>
+
+            <div>
+
+                <h2>{{totalUsers}}</h2>
+
+                <span>Total Users</span>
+
+            </div>
+
+        </mat-card>
+
+
+        <mat-card class="stat-card">
+
+            <mat-icon>verified_user</mat-icon>
+
+            <div>
+
+                <h2>{{activeUsers}}</h2>
+
+                <span>Active Users</span>
+
+            </div>
+
+        </mat-card>
+
+
+        <mat-card class="stat-card">
+
+            <mat-icon>block</mat-icon>
+
+            <div>
+
+                <h2>{{activeUsers}}</h2>
+
+                <span>Inactive Users</span>
+
+            </div>
+
+        </mat-card>
+
+    </div>
+
+
+
+    <!-- Filters -->
+
+    <mat-card class="filter-card">
+
+        <div class="filters">
+
+            <mat-form-field appearance="outline">
+
+                <mat-label>Search User</mat-label>
+
+                <input
+                    matInput
+                    [(ngModel)]="search"
+                    placeholder="Name or Email">
+
+                <mat-icon matSuffix>search</mat-icon>
+
+            </mat-form-field>
+
+
+
+            <mat-form-field appearance="outline">
+
+                <mat-label>Role</mat-label>
+
+                <mat-select [(ngModel)]="selectedRole">
+
+                    <mat-option value="">All Roles</mat-option>
+
+                    @for(role of roles; track role){
+
+                        <mat-option [value]="role">
+
+                            {{role}}
+
+                        </mat-option>
+
+                    }
+
+                </mat-select>
+
+            </mat-form-field>
+
+        </div>
+
+    </mat-card>
+
+
+
+    <!-- User Table -->
+
+    <mat-card>
+
+        <table mat-table [dataSource]="filteredUsers" class="mat-elevation-z0">
+
+            <!-- ID -->
+
+            <ng-container matColumnDef="id">
+
+                <th mat-header-cell *matHeaderCellDef>ID</th>
+
+                <td mat-cell *matCellDef="let user">
+
+                    {{user.id}}
+
+                </td>
+
+            </ng-container>
+
+
+
+            <!-- Name -->
+
+            <ng-container matColumnDef="name">
+
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+
+                <td mat-cell *matCellDef="let user">
+
+                    {{user.fullName}}
+
+                </td>
+
+            </ng-container>
+
+
+
+            <!-- Email -->
+
+            <ng-container matColumnDef="email">
+
+                <th mat-header-cell *matHeaderCellDef>Email</th>
+
+                <td mat-cell *matCellDef="let user">
+
+                    {{user.email}}
+
+                </td>
+
+            </ng-container>
+
+
+
+            <!-- Phone -->
+
+            <ng-container matColumnDef="phone">
+
+                <th mat-header-cell *matHeaderCellDef>Phone</th>
+
+                <td mat-cell *matCellDef="let user">
+
+                    {{user.phone}}
+
+                </td>
+
+            </ng-container>
+
+
+
+            <!-- Role -->
+
+            <ng-container matColumnDef="role">
+
+                <th mat-header-cell *matHeaderCellDef>Role</th>
+
+                <td mat-cell *matCellDef="let user">
+
+                    <span class="role">
+
+                        {{user.role}}
+
+                    </span>
+
+                </td>
+
+            </ng-container>
+
+
+
+            <!-- Status -->
+
+            <ng-container matColumnDef="status">
+
+                <th mat-header-cell *matHeaderCellDef>Status</th>
+
+                <td mat-cell *matCellDef="let user">
+
+                    <mat-slide-toggle
+
+                        [(ngModel)]="user.status">
+
+                    </mat-slide-toggle>
+
+                </td>
+
+            </ng-container>
+
+
+
+            <!-- Actions -->
+
+            <ng-container matColumnDef="actions">
+
+                <th mat-header-cell *matHeaderCellDef>Actions</th>
+
+                <td mat-cell *matCellDef="let user">
+
+                    <button
+                        mat-icon-button
+                        color="primary"
+                        (click)="editUser(user.id)">
+
+                        <mat-icon>edit</mat-icon>
+
+                    </button>
+
+
+
+                    <button
+                        mat-icon-button
+                        color="accent"
+                        (click)="permissions(user.id)">
+
+                        <mat-icon>admin_panel_settings</mat-icon>
+
+                    </button>
+
+
+
+                    <button
+                        mat-icon-button
+                        color="warn"
+                        (click)="deleteUser(user.id)">
+
+                        <mat-icon>delete</mat-icon>
+
+                    </button>
+
+                </td>
+
+            </ng-container>
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+
+    </mat-card>
+
+</div>

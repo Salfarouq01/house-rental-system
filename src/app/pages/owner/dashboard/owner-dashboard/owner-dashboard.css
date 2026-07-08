@@ -1,0 +1,74 @@
+.dashboard-container {
+    padding: 30px;
+    background: #f5f7fb;
+    min-height: 100vh;
+}
+
+.dashboard-container h2 {
+    margin-bottom: 25px;
+    color: #1f2937;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    padding: 25px;
+    border-radius: 16px;
+    color: #fff;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0,0,0,.15);
+}
+
+.card mat-icon {
+    font-size: 42px;
+    width: 42px;
+    height: 42px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.card h1 {
+    margin-top: 15px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.primary {
+    background: linear-gradient(135deg, #1976d2, #42a5f5);
+}
+
+.success {
+    background: linear-gradient(135deg, #2e7d32, #66bb6a);
+}
+
+.warning {
+    background: linear-gradient(135deg, #ef6c00, #ffa726);
+}
+
+.info {
+    background: linear-gradient(135deg, #00838f, #26c6da);
+}
+
+.purple {
+    background: linear-gradient(135deg, #6a1b9a, #ab47bc);
+}
+
+.income {
+    background: linear-gradient(135deg, #00897b, #26a69a);
+}

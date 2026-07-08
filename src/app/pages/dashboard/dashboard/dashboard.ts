@@ -1,7 +1,21 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
+
+import { BaseChartDirective } from 'ng2-charts';
+
+
+import {
+  ChartConfiguration,
+  ChartType
+} from 'chart.js'
+
+
 
 import { HouseService } from '../../../core/services/house.service';
 import { RoomService } from '../../../core/services/room.service';
@@ -9,23 +23,46 @@ import { TenantService } from '../../../core/services/tenant.service';
 import { PaymentService } from '../../../core/services/payment.service';
 
 
+
 @Component({
+
   selector: 'app-dashboard',
+
   standalone: true,
+
   imports: [
+
     CommonModule,
-    MatCardModule
+
+    MatCardModule,
+
+    MatIconModule,
+
+    MatButtonModule,
+
+    BaseChartDirective
   ],
+
   templateUrl: './dashboard.html',
+
   styleUrl: './dashboard.css'
+
 })
-export class DashboardComponent {
+
+
+export class DashboardComponent implements OnInit {
+
 
 
   private houseService = inject(HouseService);
+
   private roomService = inject(RoomService);
+
   private tenantService = inject(TenantService);
+
   private paymentService = inject(PaymentService);
+
+
 
 
 
@@ -45,11 +82,15 @@ export class DashboardComponent {
 
 
 
-  constructor(){
+
+
+  ngOnInit(): void {
 
     this.loadDashboard();
 
   }
+
+
 
 
 
@@ -73,6 +114,7 @@ export class DashboardComponent {
 
 
 
+
     this.totalHouses =
       houses.length;
 
@@ -83,10 +125,12 @@ export class DashboardComponent {
 
 
 
+
     this.availableRooms =
       rooms.filter(
         r => r.status === 'Available'
       ).length;
+
 
 
 
@@ -97,8 +141,10 @@ export class DashboardComponent {
 
 
 
+
     this.totalTenants =
       tenants.length;
+
 
 
 
@@ -107,18 +153,245 @@ export class DashboardComponent {
 
 
 
+
     this.totalIncome =
       payments
+
       .filter(
         p => p.status === 'Paid'
       )
+
       .reduce(
-        (sum,p)=> sum + p.amount,
+        (sum,p)=>sum + p.amount,
         0
       );
 
 
+
+
+    // update charts
+
+    this.occupancyChartData =
+    {
+
+      ...this.occupancyChartData,
+
+      datasets:[
+
+        {
+
+          label:'Rooms',
+
+          data:[
+
+            this.availableRooms,
+
+            this.occupiedRooms
+
+          ]
+
+        }
+
+      ]
+
+    };
+
+
+
+
+
+    this.paymentChartData =
+    {
+
+      ...this.paymentChartData,
+
+      datasets:[
+
+        {
+
+          label:'Payments',
+
+          data:[
+
+            this.totalIncome,
+
+            0
+
+          ]
+
+        }
+
+      ]
+
+    };
+
+
   }
+
+
+
+
+
+
+  incomeChartType: ChartType = 'line';
+
+
+
+  incomeChartData: ChartConfiguration['data'] = {
+
+
+    labels:[
+
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun'
+
+    ],
+
+
+    datasets:[
+
+      {
+
+        label:'Monthly Income',
+
+        data:[
+
+          500000,
+          700000,
+          900000,
+          650000,
+          1200000,
+          1500000
+
+        ],
+
+        tension:0.4
+
+      }
+
+    ]
+
+
+  };
+
+
+
+
+
+
+  occupancyChartType: ChartType = 'doughnut';
+
+
+
+  occupancyChartData: ChartConfiguration['data'] = {
+
+
+    labels:[
+
+      'Available Rooms',
+
+      'Occupied Rooms'
+
+    ],
+
+
+    datasets:[
+
+      {
+
+        label:'Rooms',
+
+        data:[
+
+          0,
+
+          0
+
+        ]
+
+      }
+
+    ]
+
+
+  };
+
+
+
+
+
+
+  paymentChartType: ChartType = 'bar';
+
+
+
+  paymentChartData: ChartConfiguration['data'] = {
+
+
+    labels:[
+
+      'Paid',
+
+      'Pending'
+
+    ],
+
+
+    datasets:[
+
+      {
+
+        label:'Payments',
+
+        data:[
+
+          0,
+
+          0
+
+        ]
+
+      }
+
+    ]
+
+
+  };
+
+
+
+
+
+
+  chartOptions: ChartConfiguration['options'] = {
+
+
+    responsive:true,
+
+
+    maintainAspectRatio:false,
+
+
+    plugins:{
+
+
+      legend:{
+
+
+        display:true
+
+
+      }
+
+
+    }
+
+
+  };
 
 
 }

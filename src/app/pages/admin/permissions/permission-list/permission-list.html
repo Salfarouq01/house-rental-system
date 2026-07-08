@@ -1,0 +1,170 @@
+<div class="page">
+
+
+    <!-- Header -->
+
+    <div class="header">
+
+
+        <div>
+
+            <h1>
+                Role Permission Management
+            </h1>
+
+
+            <p>
+                Assign system access permissions to users based on their roles
+            </p>
+
+
+        </div>
+
+
+
+        <mat-icon class="header-icon">
+
+            security
+
+        </mat-icon>
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- Role Selection -->
+
+
+    <mat-card class="role-card">
+
+
+        <h2>
+
+            Select Role
+
+        </h2>
+
+
+
+        <mat-form-field appearance="outline">
+
+
+            <mat-label>
+
+                Choose User Role
+
+            </mat-label>
+
+
+
+            <mat-select
+
+            [(ngModel)]="selectedRole"
+
+            (selectionChange)="changeRole()">
+
+
+
+                @for(role of roles; track role.id){
+
+
+                    <mat-option
+
+                    [value]="role.id">
+
+
+                        {{role.name}}
+
+
+                    </mat-option>
+
+
+                }
+
+            </mat-select>
+        </mat-form-field>
+    </mat-card>
+
+    <!-- Permissions -->
+    <mat-card class="permission-card">
+        <div class="permission-header">
+            <h2>
+
+                Available Permissions
+
+            </h2>
+            <span>
+
+                {{permissions.length}} Permissions
+            </span>
+        </div>
+        <div class="permissions">
+            @for(permission of permissions; track permission.id){
+                <div class="permission-item">
+                    <mat-checkbox
+                    [(ngModel)]="permission.assigned">
+                    </mat-checkbox>
+                    <div class="permission-info">
+                        <h3>
+
+                            {{permission.name}}
+
+                        </h3>
+                        <p>
+
+                            {{permission.description}}
+
+                        </p>
+
+                    </div>
+
+                    <mat-icon
+                    [class.active]="permission.assigned">
+
+
+                        verified_user
+                    </mat-icon>
+                </div>
+            }
+        </div>
+    </mat-card>
+    <!-- Actions -->
+    <div class="actions">
+        <button
+
+        mat-stroked-button
+
+        (click)="cancel()">
+
+            <mat-icon>
+
+                close
+
+            </mat-icon>
+
+            Cancel
+        </button>
+
+        <button
+
+        mat-raised-button
+
+        color="primary"
+
+        (click)="save()">
+            <mat-icon>
+
+                save
+
+            </mat-icon>
+
+            Save Permissions
+        </button>
+    </div>
+
+</div>

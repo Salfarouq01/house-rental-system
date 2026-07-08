@@ -116,4 +116,13 @@ export class TenantListComponent {
 
   }
 
+  viewTenant(id:number){
+
+    this.router.navigate([
+      '/tenants/profile',
+      id
+    ]);
+   
+   }
+
 }

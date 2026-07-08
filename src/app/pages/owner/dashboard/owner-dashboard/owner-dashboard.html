@@ -1,0 +1,33 @@
+<div class="dashboard-container">
+
+    <h2>Property Owner Dashboard</h2>
+
+    <div class="dashboard-grid">
+
+        <mat-card class="card primary">
+            <mat-icon>home</mat-icon>
+            <h3>My Houses</h3>
+            <h1>{{ myHouses }}</h1>
+        </mat-card>
+
+        <mat-card class="card success">
+            <mat-icon>meeting_room</mat-icon>
+            <h3>Total Rooms</h3>
+            <h1>{{ totalRooms }}</h1>
+        </mat-card>
+
+        <mat-card class="card info">
+            <mat-icon>event_available</mat-icon>
+            <h3>Available Rooms</h3>
+            <h1>{{ availableRooms }}</h1>
+        </mat-card>
+
+        <mat-card class="card income">
+            <mat-icon>payments</mat-icon>
+            <h3>Total Income</h3>
+            <h1>{{ income | number }} TZS</h1>
+        </mat-card>
+
+    </div>
+
+</div>

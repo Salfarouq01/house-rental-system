@@ -1,63 +1,191 @@
-<div class="dashboard">
+<div class="dashboard-container">
 
 
-    <mat-card>
+    <!-- Header -->
+    
+    <div class="dashboard-header">
+    
+    
+    <div>
+    
+    <h1>
+    Dashboard
+    </h1>
+    
+    
+    <p>
+    House Rental Management Overview
+    </p>
+    
+    
+    </div>
+    
+    
+    
+    <button
+    mat-raised-button
+    color="primary">
+    
+    
+    <mat-icon>
+    add
+    </mat-icon>
+    
+    
+    New Rental
+    
+    
+    </button>
+    
+    
+    </div>
+    
+    
+    
+    
+    
+    <!-- Summary Cards -->
+    
+    <div class="dashboard-cards">
+    
+    
+    
+    <mat-card class="dashboard-card">
+    
+    <div class="icon-box">
+    
+    <mat-icon>
+    home
+    </mat-icon>
+    
+    </div>
+    
+    
+    <div>
     
     <h3>
-    Total Houses
+    Houses
     </h3>
     
     <h1>
     {{totalHouses}}
     </h1>
     
+    </div>
+    
+    
     </mat-card>
     
     
     
-    <mat-card>
+    
+    
+    <mat-card class="dashboard-card">
+    
+    <div class="icon-box">
+    
+    <mat-icon>
+    meeting_room
+    </mat-icon>
+    
+    </div>
+    
+    
+    <div>
     
     <h3>
-    Total Rooms
+    Rooms
     </h3>
     
     <h1>
     {{totalRooms}}
     </h1>
     
+    </div>
+    
+    
     </mat-card>
     
     
     
-    <mat-card>
+    
+    
+    <mat-card class="dashboard-card">
+    
+    <div class="icon-box">
+    
+    <mat-icon>
+    check_circle
+    </mat-icon>
+    
+    </div>
+    
+    
+    <div>
     
     <h3>
-    Available Rooms
+    Available
     </h3>
     
     <h1>
     {{availableRooms}}
     </h1>
     
+    </div>
+    
+    
     </mat-card>
     
     
     
-    <mat-card>
+    
+    
+    
+    <mat-card class="dashboard-card">
+    
+    <div class="icon-box">
+    
+    <mat-icon>
+    lock
+    </mat-icon>
+    
+    </div>
+    
+    
+    <div>
     
     <h3>
-    Occupied Rooms
+    Occupied
     </h3>
     
     <h1>
     {{occupiedRooms}}
     </h1>
     
+    </div>
+    
+    
     </mat-card>
     
     
     
-    <mat-card>
+    
+    
+    
+    
+    <mat-card class="dashboard-card">
+    
+    
+    <div class="icon-box">
+    
+    <mat-icon>
+    people
+    </mat-icon>
+    
+    </div>
+    
+    
+    <div>
     
     <h3>
     Tenants
@@ -67,11 +195,30 @@
     {{totalTenants}}
     </h1>
     
+    </div>
+    
+    
     </mat-card>
     
     
     
-    <mat-card>
+    
+    
+    
+    
+    <mat-card class="dashboard-card">
+    
+    
+    <div class="icon-box">
+    
+    <mat-icon>
+    payments
+    </mat-icon>
+    
+    </div>
+    
+    
+    <div>
     
     <h3>
     Payments
@@ -81,25 +228,217 @@
     {{totalPayments}}
     </h1>
     
+    </div>
+    
+    
     </mat-card>
     
     
     
-    <mat-card>
+    
+    
+    
+    
+    
+    <mat-card class="dashboard-card income">
+    
+    
+    <div class="icon-box">
+    
+    <mat-icon>
+    account_balance_wallet
+    </mat-icon>
+    
+    </div>
+    
+    
+    <div>
     
     <h3>
-    Total Income
+    Income
     </h3>
+    
     
     <h1>
     
     {{totalIncome | number}}
     
+    <small>
     TZS
+    </small>
     
     </h1>
     
+    
+    </div>
+    
+    
     </mat-card>
+    
+    
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    <!-- Charts -->
+    
+    <div class="charts">
+    
+    
+    
+    <mat-card>
+    
+    <h2>
+    Monthly Income
+    </h2>
+    
+    
+    <canvas
+    
+    baseChart
+    
+    [data]="incomeChartData"
+    
+    [type]="incomeChartType"
+    
+    [options]="chartOptions">
+    
+    </canvas>
+    
+    
+    </mat-card>
+    
+    
+    
+    
+    
+    
+    <mat-card>
+    
+    
+    <h2>
+    Room Occupancy
+    </h2>
+    
+    
+    <canvas
+    
+    baseChart
+    
+    [data]="occupancyChartData"
+    
+    [type]="occupancyChartType"
+    
+    [options]="chartOptions">
+    
+    </canvas>
+    
+    
+    </mat-card>
+    
+    
+    
+    
+    
+    
+    <mat-card>
+    
+    
+    <h2>
+    Payment Status
+    </h2>
+    
+    
+    <canvas
+    
+    baseChart
+    
+    [data]="paymentChartData"
+    
+    [type]="paymentChartType"
+    
+    [options]="chartOptions">
+    
+    </canvas>
+    
+    
+    </mat-card>
+    
+    
+    
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    <!-- Quick Actions -->
+    
+    
+    <mat-card class="quick">
+    
+    
+    <h2>
+    Quick Actions
+    </h2>
+    
+    
+    <button mat-raised-button color="primary">
+    
+    <mat-icon>
+    add_home
+    </mat-icon>
+    
+    Add House
+    
+    </button>
+    
+    
+    
+    <button mat-raised-button>
+    
+    <mat-icon>
+    meeting_room
+    </mat-icon>
+    
+    Add Room
+    
+    </button>
+    
+    
+    
+    <button mat-raised-button>
+    
+    <mat-icon>
+    person_add
+    </mat-icon>
+    
+    Add Tenant
+    
+    </button>
+    
+    
+    
+    <button mat-raised-button>
+    
+    <mat-icon>
+    payments
+    </mat-icon>
+    
+    Payment
+    
+    </button>
+    
+    
+    </mat-card>
+    
     
     
     </div>
