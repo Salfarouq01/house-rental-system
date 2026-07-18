@@ -229,27 +229,135 @@ m=>m.TenantDashboard
 =================================
 */
 
+{
+  path:'houses',
+
+  canActivate:[
+    roleGuard,
+    permissionGuard
+  ],
+
+  data:{
+
+    roles:[
+      UserRole.ADMIN,
+      UserRole.OWNER
+    ],
+
+    permission:
+    Permission.MANAGE_HOUSES
+
+  },
+
+
+  children:[
+
+
+    {
+      path:'',
+
+      loadComponent:()=> 
+      import('./pages/houses/house-list/house-list')
+      .then(
+        m=>m.HouseListComponent
+      )
+
+    },
+
+
+    {
+      path:'add',
+
+      loadComponent:()=> 
+      import('./pages/houses/house-form/house-form')
+      .then(
+        m=>m.HouseForm
+      )
+
+    },
+
+
+    {
+      path:'edit/:id',
+
+      loadComponent:()=> 
+      import('./pages/houses/house-form/house-form')
+      .then(
+        m=>m.HouseForm
+      )
+
+    }
+
+
+  ]
+
+},
+
+
+
+
 
 {
-path:'houses',
+  path:'rooms',
 
-canActivate:[
-permissionGuard
-],
+  canActivate:[
+    roleGuard,
+    permissionGuard
+  ],
 
-data:{
+  data:{
 
-permission:
-Permission.MANAGE_HOUSES
+    roles:[
+      UserRole.ADMIN,
+      UserRole.OWNER
+    ],
 
-},
+    permission:
+    Permission.MANAGE_HOUSES
+
+  },
 
 
-loadComponent:()=> 
-import('./pages/houses/house-list/house-list')
-.then(
-m=>m.HouseListComponent
-)
+  children:[
+
+
+    {
+      path:'',
+
+      loadComponent:()=> 
+      import('./pages/rooms/room-list/room-list')
+      .then(
+        m=>m.RoomListComponent
+      )
+
+    },
+
+
+    {
+      path:'add',
+
+      loadComponent:()=> 
+      import('./pages/rooms/room-form/room-form')
+      .then(
+        m=>m.RoomFormComponent
+      )
+
+    },
+
+
+    {
+      path:'edit/:id',
+
+      loadComponent:()=> 
+      import('./pages/rooms/room-form/room-form')
+      .then(
+        m=>m.RoomFormComponent
+      )
+
+    }
+
+
+  ]
 
 },
 
@@ -258,53 +366,67 @@ m=>m.HouseListComponent
 
 
 {
-path:'rooms',
+  path:'tenants',
 
-canActivate:[
-permissionGuard
-],
+  canActivate:[
+    roleGuard,
+    permissionGuard
+  ],
 
-data:{
+  data:{
 
-permission:
-Permission.MANAGE_ROOMS
+    roles:[
+      UserRole.ADMIN,
+      UserRole.OWNER,
+      UserRole.MANAGER
+    ],
 
-},
+    permission:
+    Permission.MANAGE_HOUSES
 
-
-loadComponent:()=> 
-import('./pages/rooms/room-list/room-list')
-.then(
-m=>m.RoomListComponent
-)
-
-},
+  },
 
 
+  children:[
 
 
+    {
+      path:'',
+
+      loadComponent:()=> 
+      import('./pages/tenants/tenant-list/tenant-list')
+      .then(
+        m=>m.TenantListComponent
+      )
+
+    },
 
 
-{
-path:'tenants',
+    {
+      path:'add',
 
-canActivate:[
-permissionGuard
-],
+      loadComponent:()=> 
+      import('./pages/tenants/tenant-form/tenant-form')
+      .then(
+        m=>m.TenantFormComponent
+      )
 
-data:{
-
-permission:
-Permission.MANAGE_TENANTS
-
-},
+    },
 
 
-loadComponent:()=> 
-import('./pages/tenants/tenant-list/tenant-list')
-.then(
-m=>m.TenantListComponent
-)
+    {
+      path:'edit/:id',
+
+      loadComponent:()=> 
+        import('./pages/tenants/tenant-form/tenant-form')
+        .then(
+          m=>m.TenantFormComponent
+        )
+  
+    }
+
+
+  ]
 
 },
 
@@ -322,25 +444,67 @@ m=>m.TenantListComponent
 
 
 {
-path:'payments',
+  path:'payments',
 
-canActivate:[
-permissionGuard
-],
+  canActivate:[
+    roleGuard,
+    permissionGuard
+  ],
 
-data:{
+  data:{
 
-permission:
-Permission.MANAGE_PAYMENTS
+    roles:[
+      UserRole.ADMIN,
+      UserRole.OWNER,
+      UserRole.MANAGER
+    ],
 
-},
+    permission:
+    Permission.MANAGE_HOUSES
+
+  },
 
 
-loadComponent:()=> 
-import('./pages/payments/payment-list/payment-list')
-.then(
-m=>m.PaymentListComponent
-)
+  children:[
+
+
+    {
+      path:'',
+
+      loadComponent:()=> 
+      import('./pages/payments/payment-list/payment-list')
+      .then(
+        m=>m.PaymentListComponent
+      )
+
+    },
+
+
+    {
+      path:'add',
+
+      loadComponent:()=> 
+      import('./pages/payments/payment-form/payment-form')
+      .then(
+        m=>m.PaymentFormComponent
+      )
+
+    },
+
+
+    {
+      path:'edit/:id',
+
+      loadComponent:()=> 
+        import('./pages/payments/payment-form/payment-form')
+        .then(
+          m=>m.PaymentFormComponent
+        )
+  
+    }
+
+
+  ]
 
 },
 
@@ -478,7 +642,16 @@ m=>m.UnauthorizedComponent
 
 
 
-
+{
+  path:'splash',
+  
+  loadComponent:()=> 
+  import('./pages/splash/splash')
+  .then(
+  m=>m.SplashComponent
+  )
+  
+  },
 
 {
 path:'**',

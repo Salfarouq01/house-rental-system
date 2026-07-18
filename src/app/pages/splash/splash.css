@@ -1,0 +1,394 @@
+.splash-container {
+
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    radial-gradient(circle at center,
+    #1e293b,
+    #020617);
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+
+/* ATOM CONTAINER */
+
+.atom {
+
+    width:380px;
+    height:380px;
+
+    position:relative;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    animation:pulse 3s ease-in-out infinite;
+
+}
+
+
+/* CENTER LOGO */
+
+.logo-box {
+
+
+    width:170px;
+    height:170px;
+
+    border-radius:50%;
+
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+
+    background:
+    rgba(255,255,255,0.08);
+
+
+    backdrop-filter:blur(10px);
+
+
+    box-shadow:
+
+    0 0 30px rgba(0,255,255,.5),
+
+    inset 0 0 30px rgba(255,255,255,.2);
+
+
+    z-index:20;
+
+
+}
+
+
+
+.logo-box img {
+
+
+    width:145px;
+
+    height:145px;
+
+
+    object-fit:contain;
+
+
+    border-radius:50%;
+
+
+    filter:
+
+    drop-shadow(0 0 20px #00ffff);
+
+
+}
+
+
+
+
+
+/* ORBITS */
+
+.orbit {
+
+
+    position:absolute;
+
+
+    border-radius:50%;
+
+
+    border:2px solid;
+
+
+    opacity:.8;
+
+
+    animation:rotate linear infinite;
+
+
+}
+
+
+
+/* FIRST ORBIT */
+
+
+.orbit-one {
+
+
+    width:250px;
+
+    height:250px;
+
+
+    border-color:#00ffff;
+
+
+    animation-duration:4s;
+
+
+    box-shadow:
+
+    0 0 20px #00ffff;
+
+
+}
+
+
+
+/* SECOND ORBIT */
+
+
+.orbit-two {
+
+
+    width:320px;
+
+    height:190px;
+
+
+    transform:rotate(60deg);
+
+
+    border-color:#ff0080;
+
+
+    animation-duration:5s;
+
+
+    box-shadow:
+
+    0 0 20px #ff0080;
+
+
+}
+
+
+
+/* THIRD ORBIT */
+
+
+.orbit-three {
+
+
+    width:350px;
+
+    height:150px;
+
+
+    transform:rotate(-60deg);
+
+
+    border-color:#22c55e;
+
+
+    animation-duration:6s;
+
+
+    box-shadow:
+
+    0 0 20px #22c55e;
+
+
+}
+
+
+
+
+
+/* ELECTRON */
+
+
+.electron {
+
+
+    position:absolute;
+
+
+    width:20px;
+
+    height:20px;
+
+
+    border-radius:50%;
+
+
+    top:-10px;
+
+    left:50%;
+
+
+    background:white;
+
+
+    box-shadow:
+
+    0 0 10px white,
+
+    0 0 30px cyan,
+
+    0 0 60px cyan;
+
+
+}
+
+
+
+
+/* FLOATING PARTICLES */
+
+
+.atom::before,
+
+
+.atom::after {
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    width:8px;
+
+    height:8px;
+
+
+    border-radius:50%;
+
+
+    background:white;
+
+
+    box-shadow:
+
+    0 0 20px cyan;
+
+
+    animation:particle 4s infinite;
+
+
+}
+
+
+
+.atom::before{
+
+    top:20px;
+
+    left:80px;
+
+}
+
+
+.atom::after{
+
+    bottom:30px;
+
+    right:70px;
+
+}
+
+
+
+
+
+/* ROTATION */
+
+
+@keyframes rotate {
+
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+
+}
+
+
+
+
+
+/* LOGO BREATH EFFECT */
+
+
+@keyframes pulse {
+
+
+    0%,100%{
+
+        transform:scale(1);
+
+    }
+
+
+    50%{
+
+        transform:scale(1.05);
+
+    }
+
+
+}
+
+
+
+
+
+/* PARTICLE MOVE */
+
+
+@keyframes particle {
+
+
+    0%{
+
+        transform:translateY(0);
+
+        opacity:.3;
+
+    }
+
+
+    50%{
+
+        transform:translateY(-40px);
+
+        opacity:1;
+
+    }
+
+
+    100%{
+
+        transform:translateY(0);
+
+        opacity:.3;
+
+    }
+
+
+}

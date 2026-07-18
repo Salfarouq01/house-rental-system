@@ -23,10 +23,26 @@ export const roleGuard: CanActivateFn = (route) => {
   const router = inject(Router);
 
 
-
   const user = auth.getUser();
 
-
+  console.log(
+  "Logged User:",
+  user
+  );
+  
+  console.log(
+  "User Role:",
+  user?.role
+  );
+  
+  
+  const roles = route.data['roles'] as UserRole[];
+  
+  
+  console.log(
+  "Allowed Roles:",
+  roles
+  );
 
   if (!user) {
 
@@ -37,8 +53,6 @@ export const roleGuard: CanActivateFn = (route) => {
   }
 
 
-
-  const roles = route.data['roles'] as UserRole[];
 
 
 
